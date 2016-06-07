@@ -4,7 +4,7 @@ find_package( OpenCV REQUIRED )
 
 project( Match_Template )
 
-file(COPY messi.jpg templ.jpg DESTINATION image)
+file(COPY ../data/messi.jpg ../data/templ.jpg DESTINATION image)
 
 add_executable( ${PROJECT_NAME} example.cpp )
 target_link_libraries( ${PROJECT_NAME} ${OpenCV_LIBS} )
