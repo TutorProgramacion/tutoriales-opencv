@@ -30,14 +30,17 @@ void colorAccent(Mat& src, Mat& dst, int h, int r)
     bool in_range_color = false;
 
     for (int i = 0; i < nRows; i++) {
-        ptr_dst = dst.ptr<uchar>(i);
+        ptr_dst = dst.ptr<uchar>(i); 
         ptr_src = src.ptr<uchar>(i);
         ptr_hsv = hsv.ptr<uchar>(i);
 
         for (int j = 0; j < nCols; j += 3) {
             in_range_color = false;
+
+            // obtener el valor hue (H)
             uchar H = ptr_hsv[j];
 
+            // verificar si se encuantra en el rango indicado
             if (h1 <= h2) {
                 if (H >= h1 && H <= h2)
                     in_range_color = true;
@@ -45,12 +48,15 @@ void colorAccent(Mat& src, Mat& dst, int h, int r)
             else if (H >= h1 || H <= h2)
                 in_range_color = true;
 
+            // si esta en el rango conservar el color
+            // en caso contrario convertir a grises
             if (in_range_color == true) {
                 ptr_dst[j + 0] = ptr_src[j + 0];
                 ptr_dst[j + 1] = ptr_src[j + 1];
                 ptr_dst[j + 2] = ptr_src[j + 2];
             }
             else {
+                // conversion a grises usando usando en metodo de promedio
                 uchar gray = (ptr_src[j] + ptr_src[j + 1] + ptr_src[j + 2]) / 3;
                 ptr_dst[j + 2] = ptr_dst[j + 1] = ptr_dst[j] = gray;
             }
