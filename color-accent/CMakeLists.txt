@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.4)
 
-project( Tutorial_OpenCV )
+project( AcentuarColor )
 
 find_package( OpenCV 3.0.0 REQUIRED )
 
