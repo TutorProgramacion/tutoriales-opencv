@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.4)
 
 project( PixelateImage )
 
-find_package( OpenCV 3.0.0 REQUIRED )
+find_package( OpenCV REQUIRED )
 
 file(COPY ../data/lena.jpg DESTINATION image)
 
